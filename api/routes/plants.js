@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 const Plants = require('../db/models').Plants;
 
+// API for creating a plant
 router.post("/", function(req, res, next) {
     return Plants
     .create({
@@ -13,7 +14,7 @@ router.post("/", function(req, res, next) {
     .catch(error => res.status(400).send(error));
 });
 
-
+// API for listing all the plants
 router.get("/", function(req, res, next) {
     return Plants
     .findAll()
@@ -21,6 +22,7 @@ router.get("/", function(req, res, next) {
     .catch(error => res.status(400).send(error));
 });
 
+// API for editing plant entry
 router.put("/", function(req, res, next) {
     return Plants
     .update(
@@ -38,7 +40,7 @@ router.put("/", function(req, res, next) {
     .catch(error => res.status(400).send(error));
 });
 
-
+// API for deleting a plant entry
 router.delete("/", function(req, res, next) {
     return Plants
     .destroy(
