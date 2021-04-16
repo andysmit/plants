@@ -3,15 +3,16 @@ import * as api from '../../modules/api';
 //import Nav from 'components/Nav'
 import {Modal, Button, Form} from 'react-bootstrap';
 
-class AddPlantForm extends Component {
+class EditPlantForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          name: "",
-          desecription: "",
-          season: "",
-          plants: [],
-          show: false
+            id: "",
+            name: "",
+            desecription: "",
+            season: "",
+            plants: [],
+            show: false
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,15 +31,16 @@ class AddPlantForm extends Component {
     }
         
     handleSubmit(event) {
-        alert('Plants sending!');
+        alert('Plants updating!');
         event.preventDefault();
-        api.createPlant({
+        api.editPlant({
+            id: this.state.id,
             name: this.state.name,
             description: this.state.description,
             season: this.state.season,
         });
         this.setHide();
-        alert('Plants SENT!');
+        alert('Plants Updated!');
     }
 
     setShow() {
@@ -53,8 +55,8 @@ class AddPlantForm extends Component {
         return (
         <>
 
-        <Button variant="primary" onClick={this.setShow}>
-            Create Plant
+        <Button onClick={this.setShow}>
+            Edit Plant
         </Button>
         <Modal
                     show={this.state.show}
@@ -63,13 +65,22 @@ class AddPlantForm extends Component {
                     keyboard={false}
         >
             <Modal.Header closeButton>
-                <Modal.Title>Enter Plants Info</Modal.Title>
+                <Modal.Title>Update Plants Info</Modal.Title>
             </Modal.Header>
         
             <Modal.Body>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Label>
-                        Name of the plants:
+                        id of the plant:
+                        <input
+                        name="id"
+                        type="string"
+                        value={this.state.id}
+                        onChange={this.handleInputChange} />
+                    </Form.Label>
+                    <br />
+                    <Form.Label>
+                        Name of the plant:
                         <input
                         name="name"
                         type="string"
@@ -105,4 +116,4 @@ class AddPlantForm extends Component {
 }
 
 
-export default AddPlantForm;
+export default EditPlantForm;

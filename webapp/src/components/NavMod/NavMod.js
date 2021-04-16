@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 //import Nav from 'components/Nav'
 import AddPlantForm from '../AddPlantForm/AddPlantForm';
+import EditPlantForm from '../EditPlantForm/EditPlantForm';
 import {Modal, Form, Navbar, Nav, FormControl, Button} from 'react-bootstrap';
 
 class NavMod extends Component {
@@ -13,9 +14,11 @@ class NavMod extends Component {
         <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
             <Nav.Item>
-                <AddPlantForm></AddPlantForm>
+                <AddPlantForm></AddPlantForm> 
             </Nav.Item>
-            <Nav.Link href="#link">Edit Plant</Nav.Link>
+            <Nav.Item>
+                <EditPlantForm></EditPlantForm>
+            </Nav.Item>
             <Nav.Link href="#link">Remove Plant</Nav.Link>
             </Nav>
         </Navbar.Collapse>

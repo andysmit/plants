@@ -32,3 +32,18 @@ export const createPlant = data => {
     .then(response => response.json())
     .catch(error => console.log('error', error));
 }
+
+
+export const editPlant = data => {
+	const url = `${API_URL}/plants`;
+	var myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json')
+    var options = {
+      method: 'PUT',
+      headers: myHeaders,
+      body: JSON.stringify(data)
+    }	
+    fetch(url, options)
+    .then(response => response.json())
+    .catch(error => console.log('error', error));
+}
