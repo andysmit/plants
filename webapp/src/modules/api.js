@@ -47,3 +47,18 @@ export const editPlant = data => {
     .then(response => response.json())
     .catch(error => console.log('error', error));
 }
+
+
+export const removePlant = data => {
+	const url = `${API_URL}/plants`;
+	var myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json')
+    var options = {
+      method: 'DELETE',
+      headers: myHeaders,
+      body: JSON.stringify(data)
+    }	
+    fetch(url, options)
+    .then(response => response.json())
+    .catch(error => console.log('error', error));
+}

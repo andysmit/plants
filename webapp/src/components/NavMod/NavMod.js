@@ -2,6 +2,7 @@ import React, { Component } from "react";
 //import Nav from 'components/Nav'
 import AddPlantForm from '../AddPlantForm/AddPlantForm';
 import EditPlantForm from '../EditPlantForm/EditPlantForm';
+import RemovePlant from '../RemovePlant/RemovePlant';
 import {Modal, Form, Navbar, Nav, FormControl, Button} from 'react-bootstrap';
 
 class NavMod extends Component {
@@ -19,7 +20,9 @@ class NavMod extends Component {
             <Nav.Item>
                 <EditPlantForm></EditPlantForm>
             </Nav.Item>
-            <Nav.Link href="#link">Remove Plant</Nav.Link>
+            <Nav.Item>
+                <RemovePlant></RemovePlant>
+            </Nav.Item>
             </Nav>
         </Navbar.Collapse>
         </Navbar>
