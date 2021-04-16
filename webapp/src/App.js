@@ -9,20 +9,6 @@ import { Container, Row, Col, Table, Form} from 'react-bootstrap';
 
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      id: 0,
-      name: "",
-      desecription: "",
-      season: "",
-      plants: []
-    };
-    api.getPlants().then( data => {
-      this.setState({plants: data});
-    })
-  }
-
   render() {
     return (
 <div>
