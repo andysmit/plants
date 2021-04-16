@@ -26,24 +26,20 @@ class DisplayPlant extends Component {
                 </Col>
             </Row>
 
-            <Row className="mt-3">
+            <Row className="mt-3 justify-content-center">
                 <CardColumns>
-                    
-                        
-                            {this.state.plants.map((data, key) => {
-                                return (
-                                    <Card>
-                                    <Card.Body>
-                                        <Card.Title>{data.name}</Card.Title>
-                                        <Card.Subtitle>id: {data.id}</Card.Subtitle>
-                                        <Card.Subtitle>{data.season}</Card.Subtitle>
-                                        <Card.Text>{data.description}</Card.Text>
-                                    </Card.Body>
-                                    </Card>
-                                )
-                            })}
-                        
-                    
+                    {this.state.plants.map((data, key) => {
+                        return (
+                            <Card>
+                                <Card.Body>
+                                    <Card.Title>{data.name}</Card.Title>
+                                    <Card.Subtitle>id: {data.id}</Card.Subtitle>
+                                    <Card.Subtitle>{data.season}</Card.Subtitle>
+                                    <Card.Text>{data.description}</Card.Text>
+                                </Card.Body>
+                            </Card>
+                        )
+                    })}
                 </CardColumns>
             </Row> 
         </Container>
