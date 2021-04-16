@@ -41,7 +41,9 @@ export const editPlant = data => {
     var options = {
       method: 'PUT',
       headers: myHeaders,
-      body: JSON.stringify(data)
+      body: JSON.stringify(data, (key, value) => {
+        if (value != "") return value
+      })
     }	
     fetch(url, options)
     .then(response => response.json())

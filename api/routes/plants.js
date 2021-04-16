@@ -27,9 +27,9 @@ router.put("/", function(req, res, next) {
     return Plants
     .update(
         {
-            name: req.body.name,
-            description: req.body.description,
-            season: req.body.season,
+            name: req.body.name || Plants.name,
+            description: req.body.description || Plants.description,
+            season: req.body.season || Plants.season,
         },
         {
             where: { id: req.body.id }
