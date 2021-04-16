@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import * as api from '../../modules/api';
-//import Nav from 'components/Nav'
-import {Container, Row, Col, Table, Form} from 'react-bootstrap';
+import {Container, Row, Col, CardColumns, Card} from 'react-bootstrap';
 
 class DisplayPlant extends Component {
     constructor(props) {
@@ -22,34 +21,30 @@ class DisplayPlant extends Component {
         return (
         <Container>
             <Row>
-                <Col md={{span:4, offset:4 }}>
+                <Col md={{span:6, offset:3 }}>
                     <h1 className="text-center">Plants Catalogue</h1>
                 </Col>
             </Row>
 
-            <Row>
-                <Table striped bordered hover>
-                    <thead>
-                        <tr>
-                        <th>id</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Season</th>
-                        </tr> 
-                </thead>
-                    <tbody>
-                    {this.state.plants.map((data, key) => {
-                        return (
-                        <tr>
-                            <th>{data.id}</th>
-                            <th>{data.name}</th>
-                            <th>{data.description}</th>
-                            <th>{data.season}</th>
-                        </tr>
-                        )
-                    })}
-                    </tbody>
-                </Table>
+            <Row className="mt-3">
+                <CardColumns>
+                    
+                        
+                            {this.state.plants.map((data, key) => {
+                                return (
+                                    <Card>
+                                    <Card.Body>
+                                        <Card.Title>{data.name}</Card.Title>
+                                        <Card.Subtitle>id: {data.id}</Card.Subtitle>
+                                        <Card.Subtitle>{data.season}</Card.Subtitle>
+                                        <Card.Text>{data.description}</Card.Text>
+                                    </Card.Body>
+                                    </Card>
+                                )
+                            })}
+                        
+                    
+                </CardColumns>
             </Row> 
         </Container>
         )
