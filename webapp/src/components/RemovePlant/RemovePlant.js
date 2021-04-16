@@ -34,6 +34,7 @@ class RemovePlant extends Component {
         });
         this.setHide();
         alert('Plant Removed');
+        window.location.reload();
     }
 
     setShow() {

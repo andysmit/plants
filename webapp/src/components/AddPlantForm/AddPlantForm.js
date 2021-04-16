@@ -38,6 +38,7 @@ class AddPlantForm extends Component {
         });
         this.setHide();
         alert('Plants SENT!');
+        window.location.reload();
     }
 
     setShow() {

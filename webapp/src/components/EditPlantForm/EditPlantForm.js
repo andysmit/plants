@@ -40,6 +40,7 @@ class EditPlantForm extends Component {
         });
         this.setHide();
         alert('Plants Updated!');
+        window.location.reload();
     }
 
     setShow() {
