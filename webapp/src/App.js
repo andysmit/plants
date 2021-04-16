@@ -1,24 +1,26 @@
 import React, { Component } from "react";
+import * as api from './modules/api';
 import logo from './logo.svg';
 import './App.css';
+//import Nav from 'components/Nav'
 import {Container, Row, Col, Table, Form} from 'react-bootstrap';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: 0,
       name: "",
       desecription: "",
       season: "",
       plants: []
     };
+    api.getPlants().then( data => {
+      this.setState({plants: data});
+    })
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.getPlants = this.getPlants.bind(this)
   }
-  componentDidMount(){
-		this.getPlants();
-	}
 
   handleInputChange(event) {
     const target = event.target;
@@ -29,39 +31,15 @@ class App extends Component {
        [name]: value 
     });
   }
-	getPlants() {
-    var myHeaders = new Headers();
-    myHeaders.append('Content-Type', 'application/json')
-    var requestOptions = {
-      method: 'GET',
-      headers: myHeaders
-    }
-    fetch("http://localhost:8080/plants", requestOptions)
-      .then(response => response.json())
-      .then((data) => {
-        this.setState({plants: data})
-        console.log(this.state.ducks)
-      })
-      .catch(error => console.log('error', error));
-	}
     
   handleSubmit(event) {
-    alert('Duck data sent!');
+    alert('Plants sent!');
     event.preventDefault();
-    var myHeaders = new Headers();
-    myHeaders.append('Content-Type', 'application/json')
-    var requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: JSON.stringify({
-        'name': this.state.name,
-        'description': this.state.description,
-        'season': this.state.season,
-      })
-    }	
-    fetch("http://localhost:8080/plants", requestOptions)
-      .then(response => response.json())
-      .catch(error => console.log('error', error));
+    api.createPlant({
+      name: this.state.name,
+      description: this.state.description,
+      season: this.state.season,
+    });
   }
   render() {
     return (
