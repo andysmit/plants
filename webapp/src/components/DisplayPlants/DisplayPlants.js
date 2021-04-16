@@ -23,7 +23,7 @@ class DisplayPlant extends Component {
         <Container>
             <Row>
                 <Col md={{span:4, offset:4 }}>
-                    <h1>Plants Data</h1>
+                    <h1 className="text-center">Plants Catalogue</h1>
                 </Col>
             </Row>
 
