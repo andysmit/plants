@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import * as api from '../../modules/api';
-//import Nav from 'components/Nav'
-import {Modal, Button, Form} from 'react-bootstrap';
+import {Modal, Form, Nav} from 'react-bootstrap';
 
 class EditPlantForm extends Component {
     constructor(props) {
@@ -55,9 +54,9 @@ class EditPlantForm extends Component {
         return (
         <>
 
-        <Button onClick={this.setShow}>
+        <Nav.Link onClick={this.setShow}>
             Edit Plant
-        </Button>
+        </Nav.Link>
         <Modal
                     show={this.state.show}
                     onHide={this.setHide}
@@ -65,13 +64,13 @@ class EditPlantForm extends Component {
                     keyboard={false}
         >
             <Modal.Header closeButton>
-                <Modal.Title>Update Plants Info</Modal.Title>
+                <Modal.Title>Update Plant Info</Modal.Title>
             </Modal.Header>
         
             <Modal.Body>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Label>
-                        id of the plant:
+                        id:
                         <input
                         name="id"
                         type="string"
@@ -80,7 +79,7 @@ class EditPlantForm extends Component {
                     </Form.Label>
                     <br />
                     <Form.Label>
-                        Name of the plant:
+                        Name:
                         <input
                         name="name"
                         type="string"
@@ -98,7 +97,7 @@ class EditPlantForm extends Component {
                     </Form.Label>
                     <br />
                     <Form.Label>
-                    Season of the plant:
+                    Season:
                     <input
                         name="season"
                         type="string"
