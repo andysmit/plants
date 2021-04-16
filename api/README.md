@@ -1,5 +1,9 @@
 # API Backend Server Documentation
 
+# To run the server:
+
+`npm start`
+
 # Requirements for the backend server (Ubuntu 20.04)
 
 `sudo apt-get update`
@@ -25,6 +29,3 @@
 
 `npm install`
 
-# To run the server:
-
-`npm start`
