@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import * as api from './modules/api';
 import logo from './logo.svg';
 import './App.css';
+import NavMod from './components/NavMod/NavMod'
 import AddPlantForm from './components/AddPlantForm/AddPlantForm';
 import DisplayPlant from './components/DisplayPlants/DisplayPlants';
-import {Container, Row, Col, Table, Form} from 'react-bootstrap';
+import { Container, Row, Col, Table, Form} from 'react-bootstrap';
 
 
 class App extends Component {
@@ -24,11 +25,12 @@ class App extends Component {
 
   render() {
     return (
-<Container>
+<div>
+  <NavMod></NavMod>
   <AddPlantForm></AddPlantForm>
   <DisplayPlant></DisplayPlant>
 
-</Container>
+</div>
 
     );
   }
