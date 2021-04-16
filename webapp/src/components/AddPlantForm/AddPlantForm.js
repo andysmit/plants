@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as api from '../../modules/api';
 //import Nav from 'components/Nav'
-import {Container, Row, Col, Table, Form} from 'react-bootstrap';
+import {Modal, Button, Form} from 'react-bootstrap';
 
 class AddPlantForm extends Component {
     constructor(props) {
@@ -10,10 +10,13 @@ class AddPlantForm extends Component {
           name: "",
           desecription: "",
           season: "",
-          plants: []
+          plants: [],
+          show: false
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.setShow = this.setShow.bind(this);
+        this.setHide = this.setHide.bind(this);
       }
     
     handleInputChange(event) {
@@ -27,25 +30,43 @@ class AddPlantForm extends Component {
     }
         
     handleSubmit(event) {
-    alert('Plants sent!');
-    event.preventDefault();
-    api.createPlant({
-        name: this.state.name,
-        description: this.state.description,
-        season: this.state.season,
-    });
+        alert('Plants sending!');
+        event.preventDefault();
+        api.createPlant({
+            name: this.state.name,
+            description: this.state.description,
+            season: this.state.season,
+        });
+        this.setHide();
+        alert('Plants SENT!');
+    }
+
+    setShow() {
+        this.setState({show: true});
+    }
+
+    setHide() {
+        this.setState({show: false});
     }
 
     render() {
         return (
-        <Container>
-            <Row>
-                <Col md={{span:4, offset:4 }}>
-                    <h1>Enter Plants Info</h1>
-                </Col>
-            </Row>
+        <>
+
+        <Button variant="primary" onClick={this.setShow}>
+            Create Plant
+        </Button>
+        <Modal
+                    show={this.state.show}
+                    onHide={this.setHide}
+                    backdrop="static"
+                    keyboard={false}
+        >
+            <Modal.Header closeButton>
+                <Modal.Title>Enter Plants Info</Modal.Title>
+            </Modal.Header>
         
-            <Row>
+            <Modal.Body>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Label>
                         Name of the plants:
@@ -76,8 +97,9 @@ class AddPlantForm extends Component {
                     <br />
                     <input type="submit" value="Submit" />
                 </Form>
-            </Row>  
-        </Container>
+            </Modal.Body> 
+        </Modal>
+        </>
         )
     }
 }
